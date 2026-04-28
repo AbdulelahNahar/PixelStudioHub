@@ -5,7 +5,7 @@
     const homeSection = document.querySelector(".home-section");
     if (!homeSection) return;
 
-    // Dynamic Text
+    // --- Dynamic Rotating Text for Curated Collections ---
     const textEl = homeSection.querySelector(".section-desc");
     const texts = [
         "Welcome to Pixel Studio!",
@@ -15,15 +15,14 @@
     let index = 0;
     if (textEl) {
         setInterval(() => {
-            textEl.textContent = texts[index % texts.length];
-            // Change text color dynamically to demonstrate CSS modification
+            textEl.textContent = texts[index % texts.length]; // rotate text
             const colors = ["#333", "#444", "#555"];
-            textEl.style.color = colors[index % colors.length];
+            textEl.style.color = colors[index % colors.length]; // dynamic color change
             index++;
-        }, 4000);
+        }, 4000); // change every 4 seconds
     }
 
-    // Dynamic Feature Tags with CSS changes
+    // --- Dynamic Feature Tags with CSS changes ---
     const featureTags = homeSection.querySelector(".collection-tags");
     if (featureTags) {
         featureTags.innerHTML = "";
@@ -31,7 +30,6 @@
         features.forEach(f => {
             const span = document.createElement("span");
             span.textContent = `• ${f}`;
-            // CSS style modifications
             span.style.fontWeight = "600";
             span.style.color = "#d4af37"; // gold accent
             featureTags.appendChild(span);
@@ -41,27 +39,6 @@
     // Highlight home section background dynamically
     homeSection.style.transition = "background-color 0.5s";
     homeSection.style.backgroundColor = "#f9f9f9";
-})();
-
-// ===========================================
-// Home Page Rotating Text
-// ===========================================
-(function rotateHomeText() {
-    const textEl = document.querySelector(".home-section .section-desc");
-    if (!textEl) return; // Exit if not on Home page
-
-    const texts = [
-        "Welcome to Pixel Studio!",
-        "Explore curated pixel art collections.",
-        "Join our digital art community."
-    ];
-    let index = 0;
-
-    // Change text every 4 seconds
-    setInterval(() => {
-        textEl.textContent = texts[index % texts.length];
-        index++;
-    }, 4000);
 })();
 
 // ===========================================
@@ -129,8 +106,7 @@
         const emailDomain = email.split("@")[1];
         const validDomain = allowedDomains.includes(emailDomain);
 
-        // Reset input borders first
-        inputs.forEach(input => input.style.border = "1px solid #ccc");
+        inputs.forEach(input => input.style.border = "1px solid #ccc"); // reset borders
 
         if (!allFilled) {
             msg.textContent = "Please fill out all required fields!";
